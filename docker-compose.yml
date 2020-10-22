@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+  public-service:
+    build:
+      context: ./public-service
+    image: public-service:latest
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
+    depends_on:
+      - subscription-service
+    links:
+      - subscription-service:subcriprionservice
+  subscription-service:
+    build:
+      context: ./subscription-service
+    image: subscription-service:latest
+    depends_on:
+      - postgresq
+      - rabbitmq
+    links:
+      - postgresq:database
+      - rabbitmq:rabbitmq
+  email-service:
+    restart: always
+    build:
+      context: ./email-service
+    image: email-service:latest
+    depends_on:
+      - rabbitmq
+      - public-service
+    links:
+      - rabbitmq:rabbitmq
+  postgresq:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+
