@@ -1,0 +1,28 @@
+key-value-mapping:
+  key1: value1
+  key2: value2
+  key3: value3
+  key4: value4
+  key5: value5
+
+key-value-list-mapping:
+  key1:
+    - key1item1
+    - key1item2
+    - key1item3
+    - key1item4
+  key2:
+    - key2item1
+    - key2item2
+    - key2item3
+    - key2item4
+    - key2item5
+  key3:
+    - key3item1
+    - key3item2
+    - key3item3
+    - key3item4
+    - key3item5
+
+subscription-service-url: http://localhost:8081
+subscription-service-subscribe-timeout: 100
