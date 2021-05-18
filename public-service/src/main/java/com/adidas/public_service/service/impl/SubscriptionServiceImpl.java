@@ -28,6 +28,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     public static final String SUBSCRIPTION_SERVICE_UNAVAILABLE_ERROR_MESSAGE = "Subscription service unavailable";
     public static final String ERROR_MESSAGE_FOR_4XX_AND_5XX_STATUS_CODES =
             "Error while calling endpoint POST: {} with status code {}";
+    public static final String RANDOM_STRING =
+            "RANDOM_STRING";
 
     private final WebClient client;
 
